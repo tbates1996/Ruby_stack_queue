@@ -5,9 +5,20 @@ class LinkedList
 	#Structure to define a slot data type
 	
 	#Initialize an empty Linked list
-	def initialize
-		@head = nil
-		@tail = nil
+	def initialize node = nil
+		if node == nil
+			@head = nil
+			@tail = nil
+		else
+			@head = node
+			current = @head
+			until current == nil
+				if current.next == nil
+					@tail = current
+				end
+				current = current.next
+			end
+		end
 	end
 	#Empties the linked list 
 	def purge 
@@ -56,6 +67,16 @@ class LinkedList
 			
 		end
 	end
+	def count 
+		count = 0
+		each {|node| count += 1 }
+		count
+	end
+	def search(value)
+		each {|node| return true if node == value}
+		false
+	end
+
 	# Iterate through the current list and preform actions on the data in a code block
 	def each
 		current = @head
@@ -64,4 +85,74 @@ class LinkedList
 			current = current.next
 		end
 	end
+
+	def mergeSort(list = @head)
+		if list == nil || list.next == nil
+			return list
+		else
+			a = list
+			b = partition(list)
+			left = mergeSort(a)
+			right = mergeSort(b)
+			merge_list(left,right)
+		end
+	end
+
+	private
+
+	def merge_list(a,b)
+		if a == nil
+			return b
+		elsif b == nil
+			return a
+		elsif a.value > b.value
+			result = b
+			result.next = merge_list(a,b.next)
+		elsif a.value < b.value
+			result = a
+			result.next = merge_list(a.next,b)
+		end
+		return result
+	end
+
+	def partition(top)
+		if top == nil
+			return nil
+		else
+			slow = top
+			fast = top.next
+			until fast == nil
+				fast = fast.next
+				if fast == nil
+					break
+				else
+					fast = fast.next
+					slow = slow.next
+				end
+			end
+			tmp = slow.next
+			slow.next = nil
+			return tmp
+		end
+	end
 end
+
+
+
+
+l1 = LinkedList.new
+l1.append 54
+l1.append 3456#
+l1.append 34
+l1.append 8
+l1.append 434
+l1.append 25
+l1.append 54223#
+l1.append 1
+l1.append 43895
+
+puts l1.search 434
+puts l1.search 5433
+
+lsort = LinkedList.new(l1.mergeSort)
+lsort.each { |node| puts node }
