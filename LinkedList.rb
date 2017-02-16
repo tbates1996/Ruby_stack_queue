@@ -136,23 +136,3 @@ class LinkedList
 		end
 	end
 end
-
-
-
-
-l1 = LinkedList.new
-l1.append 54
-l1.append 3456#
-l1.append 34
-l1.append 8
-l1.append 434
-l1.append 25
-l1.append 54223#
-l1.append 1
-l1.append 43895
-
-puts l1.search 434
-puts l1.search 5433
-
-lsort = LinkedList.new(l1.mergeSort)
-lsort.each { |node| puts node }
