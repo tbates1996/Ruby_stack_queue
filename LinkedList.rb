@@ -41,6 +41,31 @@ class LinkedList
 	def delete_top
 		@head = @head.next
 	end
+	def ordered_insert(data)
+		
+		if self.empty?
+			self.prepend(data)
+		else
+			tmp = Node.new(data)
+			current = @head
+			if tmp.value <= @head.value
+				self.prepend(data)
+				return
+			elsif tmp.value >= @tail.value
+				self.append(data)
+				return
+			end
+			until current.nil?
+				if tmp.value <= current.next.value
+					tmp.next = current.next
+					current.next = tmp
+					return
+				end
+				current = current.next
+			end
+		end
+	end
+
 
 	#Adds a bucket or adds to a current bucket in the list
 	def prepend(data)
@@ -136,3 +161,4 @@ class LinkedList
 		end
 	end
 end
+
