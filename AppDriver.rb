@@ -1,7 +1,7 @@
 require "./LinkedList.rb"
 require "./Stack.rb"
 require "./Queue.rb"
-
+$stdout.reopen("report.txt","w")
 def main
 	linked_list_report
 	ordered_linked_list_report
@@ -16,14 +16,14 @@ def linked_list_report
 	ll.append("World!")
 	ll.prepend("Demonstrating")
 	ll.append("For my linked list.")
-	puts <<~EOS
+	puts <<-EOS.gsub /^\s+/, ""
 		Expected:
 		demonstrating
 		Hello
 		World!
 		For my linked list.
-
 	EOS
+	puts
 	puts "Actual:"
 	ll.each{|string| puts string}
 	puts
@@ -39,7 +39,7 @@ def ordered_linked_list_report
 	oll.ordered_insert(23)
 	oll.ordered_insert(8)
 	oll.ordered_insert(-96)
-	puts <<~EOS
+	puts <<-EOS.gsub /^\s+/, ""
 		Expexted:
 		-96
 		-2
@@ -48,8 +48,8 @@ def ordered_linked_list_report
 		23
 		55
 		553
-	
 	EOS
+	puts
 	puts "Actual:"
 	oll.each{|num| puts num}
 	puts
@@ -63,15 +63,15 @@ def stack_report
 	st.push("Fourth entry")
 	st.push("Last entry")
 	puts "Stack Report\n\n".rjust(20)
-	puts <<~EOS
+	puts <<-EOS.gsub /^\s+/, ""
 			Expected:
 			Last entry
 			Fourth entry
 			Third entry
 			Second entry
 			First entry
-	
 		EOS
+		puts
 	puts "Actual:"
 	puts st.pop.value
 	puts st.pop.value
@@ -89,15 +89,15 @@ def queue_report
 	q.enqueue([10,11,12])
 	q.enqueue([13,14,15])
 	puts "Queue Report\n\n".rjust(20)
-	puts <<~EOS
+	puts <<-EOS.gsub /^\s+/, ""
 			Expected:
 			[1,2,3]
 			[4,5,6]
 			[7,8,9]
 			[10,11,12]
 			[13,14,15]
-
 		EOS
+		puts
 		puts "Actual:"
 		puts q.dequeue.value.to_s
 		puts q.dequeue.value.to_s
