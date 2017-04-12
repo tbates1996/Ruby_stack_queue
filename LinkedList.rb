@@ -1,11 +1,13 @@
 require_relative "Node.rb"
 class LinkedList
 	#Shows the beginins and end node of the linked list
-	attr_accessor :head,:tail
+	attr_reader :head,:tail
 	#Structure to define a slot data type
 	
 	#Initialize an empty Linked list
-	def initialize node = nil
+	def initialize size = nil, node = nil
+		@count = 0
+		@size = size
 		if node == nil
 			@head = nil
 			@tail = nil
@@ -29,6 +31,11 @@ class LinkedList
 	def empty?
 		@head.nil?
 	end
+	def full?
+		return false if @size.nil? or @count < @size
+		return true if @count >= @size
+	end
+
 	#Returns the first value in the list
 	def first
 		raise "ContainerEmpty" if @head.nil?
@@ -40,6 +47,12 @@ class LinkedList
 	end
 	def delete_top
 		@head = @head.next
+		@count -= 1
+	end
+	def delete_bottom
+		@tail = @tail.previous
+		@tail.next = nil
+		@count -= 1
 	end
 	def ordered_insert(data)
 		
@@ -58,8 +71,11 @@ class LinkedList
 			until current.nil?
 				if tmp.value <= current.next.value
 					tmp.next = current.next
+					tmp.previous = current
+					current.next.previous = tmp
 					current.next = tmp
 					return
+					@count += 1
 				end
 				current = current.next
 			end
@@ -75,8 +91,11 @@ class LinkedList
 			@tail = tmp
 		else 
 			tmp.next = @head
+			tmp.previous = nil
+			@head.previous = tmp
 			@head = tmp
 		end
+		@count += 1
 
 	end
 		#tmp (insert tmp info here)
@@ -88,9 +107,11 @@ class LinkedList
 			
 		else
 			@tail.next = tmp
+			tmp.previous = @tail
+			tmp.next = nil
 			@tail = tmp
-			
 		end
+		@count += 1
 	end
 	def count 
 		count = 0

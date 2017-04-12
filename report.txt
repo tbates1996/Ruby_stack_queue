@@ -1,16 +1,33 @@
      Linked List Report
 
 Expected:
-demonstrating
-Hello
-World!
-For my linked list.
-
-Actual:
+This is a test entry
 Demonstrating
 Hello
 World!
 For my linked list.
+Item 6
+
+Is this list full? true
+Is this list empty? false
+
+Actual:
+This is a test entry
+Demonstrating
+Hello
+World!
+For my linked list.
+Item 6
+
+Is this list full? false
+Is this list empty? false
+
+After delete and insert:
+The first three are now missing
+Hello
+World!
+For my linked list.
+Two items have been deleted
 
   Ordered Linked List Report
 
@@ -23,6 +40,9 @@ Expexted:
 55
 553
 
+Is this list full? false
+Is this list empty? false
+
 Actual:
 -96
 -2
@@ -32,10 +52,28 @@ Actual:
 55
 553
 
+Is this list full? false
+Is this list empty? false
+
+Ordered linked list after insertions and deletions
+-10
+-2
+8
+10
+23
+28
+55
+823
+
       Stack Report
+
+
+Is this stack full? true
+Is this stack empty? false
 
 Expected:
 Last entry
+Fifth entry
 Fourth entry
 Third entry
 Second entry
@@ -43,23 +81,58 @@ First entry
 
 Actual:
 Last entry
+Fifth entry
 Fourth entry
 Third entry
 Second entry
 First entry
+
+Pop 1: Last entry
+Pop 2: Fifth entry
+Pop 3: Fourth entry
+
+Is this stack full? false
+Is this stack empty? false
+
+Actual after pop and push:
+Second new entry
+First new entry
+Third entry
+Second entry
+First entry
+
+Is this stack empty? true
 
       Queue Report
 
 Expected:
-[1,2,3]
-[4,5,6]
-[7,8,9]
-[10,11,12]
-[13,14,15]
-
-Actual:
 [1, 2, 3]
 [4, 5, 6]
 [7, 8, 9]
 [10, 11, 12]
 [13, 14, 15]
+[16, 17, 18]
+
+Is this queue full? false
+Is this queue empty? false
+
+Actual Before Dequeue:
+[1, 2, 3]
+[4, 5, 6]
+[7, 8, 9]
+[10, 11, 12]
+[13, 14, 15]
+[16, 17, 18]
+
+Dequeue 1: [1, 2, 3]
+Dequeue 2: [4, 5, 6]
+
+Actual After Dequeue:
+[7, 8, 9]
+[10, 11, 12]
+[13, 14, 15]
+[16, 17, 18]
+
+Is this queue full? false
+Is this queue empty? false
+

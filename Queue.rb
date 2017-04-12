@@ -2,8 +2,8 @@ require_relative "LinkedList.rb"
 
 class MyQueue < LinkedList
 
-	def initialize
-		super
+	def initialize size = nil
+		super size
 	end
 	
 	def enqueue(data)

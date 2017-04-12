@@ -1,8 +1,8 @@
 require_relative "LinkedList.rb"
 class Stack < LinkedList
 
-	def initialize
-		super
+	def initialize size = nil
+		super size
 	end
 
 	def push(data)

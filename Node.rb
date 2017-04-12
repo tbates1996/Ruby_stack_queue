@@ -1,6 +1,6 @@
 class Node
 	
-	attr_accessor :value,:next
+	attr_accessor :value,:next,:previous
 	include Comparable
 
 	def initialize(val)
